@@ -18,7 +18,7 @@ export interface Testimonial {
   avatar: string;
 }
 
-// Added missing Recommendation interface for AI-generated service advice
+// Added Recommendation interface to resolve import errors
 export interface Recommendation {
   packageId: string;
   reasoning: string;

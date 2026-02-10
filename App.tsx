@@ -31,8 +31,12 @@ const App: React.FC = () => {
           <Services />
         </section>
 
-        {/* AI Advisor section added to make the recommendation feature accessible */}
-        <section className="py-20 bg-gray-900 text-white overflow-hidden">
+        {/* AI Detailing Advisor Section */}
+        <section id="ai-advisor" className="py-24 bg-gray-900 text-white relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+            <div className="absolute -top-24 -left-24 w-96 h-96 bg-brand-500 rounded-full blur-3xl"></div>
+            <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-brand-800 rounded-full blur-3xl"></div>
+          </div>
           <AIAdvisor />
         </section>
 
