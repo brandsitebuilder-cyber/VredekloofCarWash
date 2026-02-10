@@ -4,11 +4,11 @@ import React from 'react';
 const Hero: React.FC = () => {
   return (
     <div className="relative h-screen flex items-center justify-center overflow-hidden bg-gray-900">
-      {/* Background Image: Updated to a different 'car being washed' image */}
+      {/* Background Image: Updated to the specific Unsplash image requested by user */}
       <div 
         className="absolute inset-0 z-0 bg-no-repeat transition-transform duration-1000 scale-105"
         style={{ 
-          backgroundImage: 'url("https://images.unsplash.com/photo-1552930294-6b595f4c2974?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80")',
+          backgroundImage: 'url("https://images.unsplash.com/photo-1607860108855-64acf2078ed9?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")',
           backgroundPosition: 'center center',
           backgroundSize: 'cover',
           filter: 'brightness(0.4)'
