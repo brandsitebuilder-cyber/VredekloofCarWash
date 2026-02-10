@@ -9,6 +9,8 @@ const Contact: React.FC = () => {
     packageType: 'Basic Express (R150)',
     date: ''
   });
+  
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -35,6 +37,15 @@ Please contact the customer to confirm availability.
     `.trim();
 
     window.location.href = `mailto:brandsitebuilder@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    setIsSubmitted(true);
+    setFormData({
+      fullName: '',
+      phone: '',
+      carDetails: '',
+      packageType: 'Basic Express (R150)',
+      date: ''
+    });
   };
 
   return (
@@ -88,82 +99,105 @@ Please contact the customer to confirm availability.
           </div>
         </div>
 
-        <div className="bg-white/5 p-10 rounded-[3rem] border border-white/10 shadow-2xl relative overflow-hidden">
+        <div className="bg-white/5 p-10 rounded-[3rem] border border-white/10 shadow-2xl relative overflow-hidden flex flex-col justify-center min-h-[600px]">
            <div className="absolute top-0 right-0 bg-brand-600 text-white text-[10px] font-bold px-4 py-2 rounded-bl-2xl uppercase tracking-widest shadow-lg">
               Online Booking
            </div>
-          <h3 className="text-2xl font-display font-bold mb-6 text-white">RESERVE A SLOT</h3>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-widest">Full Name</label>
-                <input 
-                  type="text" 
-                  name="fullName"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                  required
-                  className="w-full bg-white/10 border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all placeholder-gray-500" 
-                  placeholder="John Smith" 
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-widest">Phone Number</label>
-                <input 
-                  type="tel" 
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                  className="w-full bg-white/10 border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all placeholder-gray-500" 
-                  placeholder="082 123 4567" 
-                />
-              </div>
-            </div>
-            
-            <div>
-              <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-widest">Car Make & Model</label>
-              <input 
-                type="text" 
-                name="carDetails"
-                value={formData.carDetails}
-                onChange={handleChange}
-                required
-                className="w-full bg-white/10 border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all placeholder-gray-500" 
-                placeholder="Toyota Hilux" 
-              />
-            </div>
+           
+           {isSubmitted ? (
+             <div className="text-center animate-in fade-in zoom-in duration-500">
+               <div className="w-24 h-24 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-8 shadow-lg shadow-green-500/30">
+                 <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                 </svg>
+               </div>
+               <h3 className="text-3xl font-display font-bold text-white mb-4">REQUEST SENT</h3>
+               <p className="text-gray-300 text-lg leading-relaxed mb-8">
+                 Thank you for contacting Vredekloof Car Wash! We will get back to you shortly.
+               </p>
+               <button 
+                 onClick={() => setIsSubmitted(false)}
+                 className="text-brand-400 font-bold hover:text-white transition-colors uppercase tracking-widest text-sm"
+               >
+                 Make Another Booking
+               </button>
+             </div>
+           ) : (
+             <>
+                <h3 className="text-2xl font-display font-bold mb-6 text-white">RESERVE A SLOT</h3>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-widest">Full Name</label>
+                      <input 
+                        type="text" 
+                        name="fullName"
+                        value={formData.fullName}
+                        onChange={handleChange}
+                        required
+                        className="w-full bg-white/10 border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all placeholder-gray-500" 
+                        placeholder="John Smith" 
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-widest">Phone Number</label>
+                      <input 
+                        type="tel" 
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        required
+                        className="w-full bg-white/10 border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all placeholder-gray-500" 
+                        placeholder="082 123 4567" 
+                      />
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-widest">Car Make & Model</label>
+                    <input 
+                      type="text" 
+                      name="carDetails"
+                      value={formData.carDetails}
+                      onChange={handleChange}
+                      required
+                      className="w-full bg-white/10 border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all placeholder-gray-500" 
+                      placeholder="Toyota Hilux" 
+                    />
+                  </div>
 
-            <div>
-              <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-widest">Package</label>
-              <select 
-                name="packageType"
-                value={formData.packageType}
-                onChange={handleChange}
-                className="w-full bg-white/10 border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all appearance-none cursor-pointer"
-              >
-                <option className="bg-gray-900" value="Basic Express (R150)">Basic Express (R150)</option>
-                <option className="bg-gray-900" value="Premium Valet (R450)">Premium Valet (R450)</option>
-                <option className="bg-gray-900" value="Executive Showroom (R1250)">Executive Showroom (R1250)</option>
-              </select>
-            </div>
+                  <div>
+                    <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-widest">Package</label>
+                    <select 
+                      name="packageType"
+                      value={formData.packageType}
+                      onChange={handleChange}
+                      className="w-full bg-white/10 border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all appearance-none cursor-pointer"
+                    >
+                      <option className="bg-gray-900" value="Basic Express (R150)">Basic Express (R150)</option>
+                      <option className="bg-gray-900" value="Premium Valet (R450)">Premium Valet (R450)</option>
+                      <option className="bg-gray-900" value="Executive Showroom (R1250)">Executive Showroom (R1250)</option>
+                    </select>
+                  </div>
 
-            <div>
-              <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-widest">Preferred Date</label>
-              <input 
-                type="date" 
-                name="date"
-                value={formData.date}
-                onChange={handleChange}
-                required
-                className="w-full bg-white/10 border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all" 
-              />
-            </div>
+                  <div>
+                    <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-widest">Preferred Date</label>
+                    <input 
+                      type="date" 
+                      name="date"
+                      value={formData.date}
+                      onChange={handleChange}
+                      required
+                      className="w-full bg-white/10 border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all" 
+                    />
+                  </div>
 
-            <button type="submit" className="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-5 rounded-2xl text-lg shadow-xl transition-all transform hover:scale-[1.02] active:scale-95">
-              CONFIRM BOOKING
-            </button>
-          </form>
+                  <button type="submit" className="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-5 rounded-2xl text-lg shadow-xl transition-all transform hover:scale-[1.02] active:scale-95">
+                    CONFIRM BOOKING
+                  </button>
+                </form>
+             </>
+           )}
         </div>
       </div>
     </div>
