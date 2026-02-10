@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const Hero: React.FC = () => {
@@ -25,12 +24,12 @@ const Hero: React.FC = () => {
         </div>
         
         <h1 className="text-5xl md:text-8xl font-display font-extrabold text-white mb-6 leading-[1.1] tracking-tight">
-          RESTORING THAT <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-600">NEW CAR FEEL</span>
+          RESTORE YOUR RIDE, <br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-600">INSIDE AND OUT.</span>
         </h1>
         
         <p className="max-w-2xl mx-auto text-lg md:text-xl text-gray-300 mb-10 font-medium leading-relaxed">
-          Premium automotive detailing and valet services in the heart of Brackenfell. Experience showroom quality results that last.
+          Professional car wash and premium valet services in the heart of Vredekloof. Precision cleaning that lasts.
         </p>
         
         <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">

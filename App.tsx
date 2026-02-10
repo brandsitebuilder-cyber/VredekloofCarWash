@@ -6,7 +6,6 @@ import Process from './components/Process';
 import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import AIAdvisor from './components/AIAdvisor';
 
 const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -29,15 +28,6 @@ const App: React.FC = () => {
         
         <section id="services" className="py-20 bg-white">
           <Services />
-        </section>
-
-        {/* AI Detailing Advisor Section */}
-        <section id="ai-advisor" className="py-24 bg-gray-900 text-white relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-            <div className="absolute -top-24 -left-24 w-96 h-96 bg-brand-500 rounded-full blur-3xl"></div>
-            <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-brand-800 rounded-full blur-3xl"></div>
-          </div>
-          <AIAdvisor />
         </section>
 
         <section id="process" className="py-20 bg-gray-50">

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 interface HeaderProps {
@@ -22,7 +21,7 @@ const Header: React.FC<HeaderProps> = ({ scrolled }) => {
         <div className="flex items-center space-x-2">
           <div className="w-10 h-10 bg-brand-600 rounded-lg flex items-center justify-center text-white font-bold text-2xl shadow-lg">V</div>
           <span className={`text-xl font-display font-bold tracking-tight ${scrolled ? 'text-gray-900' : 'text-white'}`}>
-            VREDEKLOOF<span className="text-brand-500 text-sm align-top ml-0.5">VALET</span>
+            VREDEKLOOF<span className="text-brand-500 text-sm align-top ml-0.5 uppercase">Car Wash</span>
           </span>
         </div>
 

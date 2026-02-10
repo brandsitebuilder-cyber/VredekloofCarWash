@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const Footer: React.FC = () => {
@@ -9,7 +8,7 @@ const Footer: React.FC = () => {
           <div className="col-span-1 md:col-span-1">
             <div className="flex items-center space-x-2 mb-6">
               <div className="w-8 h-8 bg-brand-600 rounded flex items-center justify-center text-white font-bold text-xl">V</div>
-              <span className="text-xl font-display font-bold tracking-tight">VREDEKLOOF<span className="text-brand-500 text-xs align-top ml-0.5">VALET</span></span>
+              <span className="text-xl font-display font-bold tracking-tight">VREDEKLOOF<span className="text-brand-500 text-xs align-top ml-0.5 uppercase">Car Wash</span></span>
             </div>
             <p className="text-gray-500 leading-relaxed mb-6">
               Vredekloof Car wash and Valet Services is your premium automotive detailing specialist. We combine traditional craft with modern technology to deliver showroom-quality results.
