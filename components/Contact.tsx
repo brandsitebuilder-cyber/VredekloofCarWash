@@ -3,16 +3,19 @@ import React, { useState } from 'react';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
-    fullName: '',
+    name: '',
+    email: '',
     phone: '',
     carDetails: '',
     packageType: 'Basic Express (R150)',
-    date: ''
+    date: '',
+    message: ''
   });
   
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -20,32 +23,39 @@ const Contact: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     
-    const subject = "New Car Wash Booking Request";
-    const body = `
-New booking request details:
+    try {
+      const response = await fetch("https://formspree.io/f/your-unique-id", {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      });
 
-Full Name: ${formData.fullName}
-Phone Number: ${formData.phone}
-Car Make & Model: ${formData.carDetails}
-Selected Package: ${formData.packageType}
-Preferred Date: ${formData.date}
-
-Please contact the customer to confirm availability.
-    `.trim();
-
-    window.location.href = `mailto:brandsitebuilder@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
-    setIsSubmitted(true);
-    setFormData({
-      fullName: '',
-      phone: '',
-      carDetails: '',
-      packageType: 'Basic Express (R150)',
-      date: ''
-    });
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          carDetails: '',
+          packageType: 'Basic Express (R150)',
+          date: '',
+          message: ''
+        });
+      } else {
+        alert("There was a problem submitting your form. Please try again.");
+      }
+    } catch (error) {
+      alert("There was a network error. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -131,8 +141,8 @@ Please contact the customer to confirm availability.
                       <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-widest">Full Name</label>
                       <input 
                         type="text" 
-                        name="fullName"
-                        value={formData.fullName}
+                        name="name"
+                        value={formData.name}
                         onChange={handleChange}
                         required
                         className="w-full bg-white/10 border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all placeholder-gray-500" 
@@ -152,6 +162,19 @@ Please contact the customer to confirm availability.
                       />
                     </div>
                   </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-widest">Email Address</label>
+                    <input 
+                      type="email" 
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full bg-white/10 border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all placeholder-gray-500" 
+                      placeholder="john@example.com" 
+                    />
+                  </div>
                   
                   <div>
                     <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-widest">Car Make & Model</label>
@@ -166,34 +189,59 @@ Please contact the customer to confirm availability.
                     />
                   </div>
 
-                  <div>
-                    <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-widest">Package</label>
-                    <select 
-                      name="packageType"
-                      value={formData.packageType}
-                      onChange={handleChange}
-                      className="w-full bg-white/10 border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all appearance-none cursor-pointer"
-                    >
-                      <option className="bg-gray-900" value="Basic Express (R150)">Basic Express (R150)</option>
-                      <option className="bg-gray-900" value="Premium Valet (R450)">Premium Valet (R450)</option>
-                      <option className="bg-gray-900" value="Executive Showroom (R1250)">Executive Showroom (R1250)</option>
-                    </select>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-widest">Package</label>
+                      <select 
+                        name="packageType"
+                        value={formData.packageType}
+                        onChange={handleChange}
+                        className="w-full bg-white/10 border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all appearance-none cursor-pointer"
+                      >
+                        <option className="bg-gray-900" value="Basic Express (R150)">Basic Express (R150)</option>
+                        <option className="bg-gray-900" value="Premium Valet (R450)">Premium Valet (R450)</option>
+                        <option className="bg-gray-900" value="Executive Showroom (R1250)">Executive Showroom (R1250)</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-widest">Preferred Date</label>
+                      <input 
+                        type="date" 
+                        name="date"
+                        value={formData.date}
+                        onChange={handleChange}
+                        required
+                        className="w-full bg-white/10 border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all" 
+                      />
+                    </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-widest">Preferred Date</label>
-                    <input 
-                      type="date" 
-                      name="date"
-                      value={formData.date}
+                    <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-widest">Additional Message</label>
+                    <textarea 
+                      name="message"
+                      value={formData.message}
                       onChange={handleChange}
-                      required
-                      className="w-full bg-white/10 border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all" 
+                      rows={3}
+                      className="w-full bg-white/10 border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all placeholder-gray-500 resize-none" 
+                      placeholder="Any specific requests or questions..." 
                     />
                   </div>
 
-                  <button type="submit" className="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-5 rounded-2xl text-lg shadow-xl transition-all transform hover:scale-[1.02] active:scale-95">
-                    CONFIRM BOOKING
+                  <button 
+                    type="submit" 
+                    disabled={isSubmitting}
+                    className="w-full bg-brand-600 hover:bg-brand-700 disabled:bg-gray-600 text-white font-bold py-5 rounded-2xl text-lg shadow-xl transition-all transform hover:scale-[1.02] active:scale-95 flex justify-center items-center"
+                  >
+                    {isSubmitting ? (
+                      <svg className="animate-spin h-6 w-6 text-white" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                    ) : (
+                      'CONFIRM BOOKING'
+                    )}
                   </button>
                 </form>
              </>
