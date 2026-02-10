@@ -1,14 +1,17 @@
+
 import React from 'react';
 
 const Hero: React.FC = () => {
   return (
     <div className="relative h-screen flex items-center justify-center overflow-hidden bg-gray-900">
-      {/* Background Image: Using a professional high-res Unsplash image for guaranteed world-class aesthetics and loading reliability */}
+      {/* Background Image: Updated to use '/hero-bg.jpg' from public folder */}
       <div 
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 scale-105"
+        className="absolute inset-0 z-0 bg-no-repeat transition-transform duration-1000 scale-105"
         style={{ 
-          backgroundImage: `url('https://images.unsplash.com/photo-1607860108855-64acf2078ed9?q=80&w=2071&auto=format&fit=crop')`,
-          filter: 'brightness(0.35)'
+          backgroundImage: `url('/hero-bg.jpg')`,
+          backgroundPosition: 'center center',
+          backgroundSize: 'cover',
+          filter: 'brightness(0.4)'
         }}
       />
       
@@ -21,7 +24,7 @@ const Hero: React.FC = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         
         <h1 className="text-5xl md:text-8xl font-display font-extrabold text-white mb-6 leading-[1.1] tracking-tight">
-          RESTORE YOUR RIDE, <br />
+          RESTORE YOUR RIDE <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-600">INSIDE AND OUT.</span>
         </h1>
         
