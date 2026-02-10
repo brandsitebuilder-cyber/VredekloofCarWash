@@ -4,11 +4,11 @@ import React from 'react';
 const Hero: React.FC = () => {
   return (
     <div className="relative h-screen flex items-center justify-center overflow-hidden bg-gray-900">
-      {/* Background Image: Updated to use '/hero-bg.jpg' from public folder */}
+      {/* Background Image: Updated to a different 'car being washed' image */}
       <div 
         className="absolute inset-0 z-0 bg-no-repeat transition-transform duration-1000 scale-105"
         style={{ 
-          backgroundImage: `url('/hero-bg.jpg')`,
+          backgroundImage: 'url("https://images.unsplash.com/photo-1552930294-6b595f4c2974?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80")',
           backgroundPosition: 'center center',
           backgroundSize: 'cover',
           filter: 'brightness(0.4)'
