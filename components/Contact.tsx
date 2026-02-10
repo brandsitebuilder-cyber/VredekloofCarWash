@@ -1,7 +1,42 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 
 const Contact: React.FC = () => {
+  const [formData, setFormData] = useState({
+    fullName: '',
+    phone: '',
+    carDetails: '',
+    packageType: 'Basic Express (R150)',
+    date: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    const subject = "New Car Wash Booking Request";
+    const body = `
+New booking request details:
+
+Full Name: ${formData.fullName}
+Phone Number: ${formData.phone}
+Car Make & Model: ${formData.carDetails}
+Selected Package: ${formData.packageType}
+Preferred Date: ${formData.date}
+
+Please contact the customer to confirm availability.
+    `.trim();
+
+    window.location.href = `mailto:brandsitebuilder@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
@@ -58,38 +93,74 @@ const Contact: React.FC = () => {
               Online Booking
            </div>
           <h3 className="text-2xl font-display font-bold mb-6 text-white">RESERVE A SLOT</h3>
-          <form className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-widest">Full Name</label>
-                <input type="text" className="w-full bg-white/10 border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all placeholder-gray-500" placeholder="John Smith" />
+                <input 
+                  type="text" 
+                  name="fullName"
+                  value={formData.fullName}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-white/10 border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all placeholder-gray-500" 
+                  placeholder="John Smith" 
+                />
               </div>
               <div>
                 <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-widest">Phone Number</label>
-                <input type="tel" className="w-full bg-white/10 border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all placeholder-gray-500" placeholder="082 123 4567" />
+                <input 
+                  type="tel" 
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-white/10 border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all placeholder-gray-500" 
+                  placeholder="082 123 4567" 
+                />
               </div>
             </div>
             
             <div>
               <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-widest">Car Make & Model</label>
-              <input type="text" className="w-full bg-white/10 border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all placeholder-gray-500" placeholder="Toyota Hilux" />
+              <input 
+                type="text" 
+                name="carDetails"
+                value={formData.carDetails}
+                onChange={handleChange}
+                required
+                className="w-full bg-white/10 border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all placeholder-gray-500" 
+                placeholder="Toyota Hilux" 
+              />
             </div>
 
             <div>
               <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-widest">Package</label>
-              <select className="w-full bg-white/10 border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all appearance-none cursor-pointer">
-                <option className="bg-gray-900">Basic Express (R150)</option>
-                <option className="bg-gray-900">Premium Valet (R450)</option>
-                <option className="bg-gray-900">Executive Showroom (R1250)</option>
+              <select 
+                name="packageType"
+                value={formData.packageType}
+                onChange={handleChange}
+                className="w-full bg-white/10 border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all appearance-none cursor-pointer"
+              >
+                <option className="bg-gray-900" value="Basic Express (R150)">Basic Express (R150)</option>
+                <option className="bg-gray-900" value="Premium Valet (R450)">Premium Valet (R450)</option>
+                <option className="bg-gray-900" value="Executive Showroom (R1250)">Executive Showroom (R1250)</option>
               </select>
             </div>
 
             <div>
               <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-widest">Preferred Date</label>
-              <input type="date" className="w-full bg-white/10 border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all" />
+              <input 
+                type="date" 
+                name="date"
+                value={formData.date}
+                onChange={handleChange}
+                required
+                className="w-full bg-white/10 border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all" 
+              />
             </div>
 
-            <button type="button" className="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-5 rounded-2xl text-lg shadow-xl transition-all transform hover:scale-[1.02] active:scale-95">
+            <button type="submit" className="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-5 rounded-2xl text-lg shadow-xl transition-all transform hover:scale-[1.02] active:scale-95">
               CONFIRM BOOKING
             </button>
           </form>
