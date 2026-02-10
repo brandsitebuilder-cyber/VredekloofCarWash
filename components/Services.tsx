@@ -26,12 +26,12 @@ const services: Service[] = [
   {
     id: 'executive',
     name: 'Executive Showroom',
-    description: 'The ultimate detailing experience. Every inch of your car meticulously perfected.',
+    description: 'The ultimate deep clean experience. Every inch of your car meticulously perfected.',
     price: 'R1250',
     duration: '5 Hours',
     icon: '👑',
     category: 'full',
-    features: ['Engine Bay Clean', 'Steam Extraction', 'Clay Bar Treatment', 'Machine Polish', '12-Month Sealant']
+    features: ['Engine Bay Clean', 'Steam Extraction', 'Hand Polish', 'Deep Upholstery Clean', 'Polymer Sealant']
   }
 ];
 

@@ -21,7 +21,7 @@ const AIAdvisor: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <div className="mb-12">
-        <span className="bg-brand-500/20 text-brand-400 px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-4 inline-block border border-brand-500/30">AI Detailing Assistant</span>
+        <span className="bg-brand-500/20 text-brand-400 px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-4 inline-block border border-brand-500/30">AI Wash & Valet Assistant</span>
         <h2 className="text-4xl md:text-5xl font-display font-extrabold mb-6">PERSONALIZED CARE</h2>
         <p className="text-xl text-brand-100 max-w-2xl mx-auto">
           Describe the state of your vehicle (e.g., "coffee stains on back seats", "lots of mud after a rainy trip") and our AI will suggest the perfect treatment.

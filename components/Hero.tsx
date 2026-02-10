@@ -19,9 +19,6 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="inline-block mb-4 px-4 py-1.5 border border-brand-400/30 rounded-full bg-brand-500/10 backdrop-blur-sm">
-          <span className="text-brand-400 text-xs font-bold tracking-[0.2em] uppercase">Vredekloof's #1 Detailing Specialist</span>
-        </div>
         
         <h1 className="text-5xl md:text-8xl font-display font-extrabold text-white mb-6 leading-[1.1] tracking-tight">
           RESTORE YOUR RIDE, <br />
@@ -50,15 +47,11 @@ const Hero: React.FC = () => {
           </a>
         </div>
 
-        <div className="mt-20 flex flex-wrap items-center justify-center gap-8 md:gap-16 opacity-80">
+        <div className="mt-20 flex flex-wrap items-center justify-center opacity-80">
           <div className="text-white flex items-center space-x-2">
             <span className="text-3xl font-bold">5.0</span>
             <div className="flex text-yellow-500">★★★★★</div>
             <span className="text-sm font-medium">Google Reviews</span>
-          </div>
-          <div className="h-8 w-px bg-white/20 hidden sm:block"></div>
-          <div className="text-white text-sm font-bold tracking-widest uppercase">
-            CERTIFIED DETAILERS
           </div>
         </div>
       </div>

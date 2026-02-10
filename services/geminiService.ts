@@ -13,7 +13,7 @@ export const getAIRecommendation = async (userDescription: string): Promise<Reco
     model: 'gemini-3-flash-preview',
     contents: `The user says their car condition is: "${userDescription}". Based on this, recommend the best package (basic, premium, or executive) and explain why.`,
     config: {
-      systemInstruction: "You are a professional car detailing consultant. Be concise and persuasive. Suggest one of the following packages: 'basic', 'premium', or 'executive'. Also suggest one extra service like 'Engine Bay Clean' or 'Ceramic Coating'.",
+      systemInstruction: "You are a professional car wash and valet consultant. Be concise and persuasive. Suggest one of the following packages: 'basic', 'premium', or 'executive'. Also suggest one extra service like 'Engine Bay Clean' or 'Upholstery Shampoo'.",
       responseMimeType: "application/json",
       responseSchema: {
         type: Type.OBJECT,

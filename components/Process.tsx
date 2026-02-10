@@ -10,9 +10,9 @@ const steps = [
   },
   {
     num: '02',
-    title: 'PICK UP / MOBILE',
-    desc: 'We either visit you or arrange a vehicle pickup from your location.',
-    icon: '🚗'
+    title: 'DROP OFF',
+    desc: 'Bring your vehicle to our center. We will notify you immediately when it is ready for collection.',
+    icon: '📍'
   },
   {
     num: '03',

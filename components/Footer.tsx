@@ -1,17 +1,18 @@
+
 import React from 'react';
 
 const Footer: React.FC = () => {
   return (
     <footer className="bg-gray-950 text-white pt-20 pb-10 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-          <div className="col-span-1 md:col-span-1">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+          <div className="col-span-1">
             <div className="flex items-center space-x-2 mb-6">
               <div className="w-8 h-8 bg-brand-600 rounded flex items-center justify-center text-white font-bold text-xl">V</div>
               <span className="text-xl font-display font-bold tracking-tight">VREDEKLOOF<span className="text-brand-500 text-xs align-top ml-0.5 uppercase">Car Wash</span></span>
             </div>
-            <p className="text-gray-500 leading-relaxed mb-6">
-              Vredekloof Car wash and Valet Services is your premium automotive detailing specialist. We combine traditional craft with modern technology to deliver showroom-quality results.
+            <p className="text-gray-500 leading-relaxed mb-6 max-w-sm">
+              Vredekloof Car wash and Valet Services is your trusted local car care center. Serving the Vredekloof community with pride, quality, and convenience.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-brand-600 transition-colors">
@@ -38,21 +39,10 @@ const Footer: React.FC = () => {
             <h4 className="font-display font-bold text-lg mb-6 uppercase tracking-wider">Services</h4>
             <ul className="space-y-4">
               <li><a href="#" className="text-gray-500 hover:text-brand-500 transition-colors">Interior Deep Clean</a></li>
-              <li><a href="#" className="text-gray-500 hover:text-brand-500 transition-colors">Ceramic Coating</a></li>
-              <li><a href="#" className="text-gray-500 hover:text-brand-500 transition-colors">Machine Polishing</a></li>
+              <li><a href="#" className="text-gray-500 hover:text-brand-500 transition-colors">Hand Polish & Wax</a></li>
+              <li><a href="#" className="text-gray-500 hover:text-brand-500 transition-colors">Engine Cleaning</a></li>
               <li><a href="#" className="text-gray-500 hover:text-brand-500 transition-colors">Lease Return Valet</a></li>
             </ul>
-          </div>
-
-          <div>
-            <h4 className="font-display font-bold text-lg mb-6 uppercase tracking-wider">Newsletter</h4>
-            <p className="text-gray-500 mb-6">Subscribe for car care tips and exclusive offers.</p>
-            <div className="flex">
-              <input type="email" placeholder="Email address" className="bg-white/5 border border-white/10 rounded-l-xl p-3 text-sm focus:outline-none focus:ring-1 focus:ring-brand-500 w-full" />
-              <button className="bg-brand-600 hover:bg-brand-700 px-4 rounded-r-xl transition-colors">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-              </button>
-            </div>
           </div>
         </div>
 
