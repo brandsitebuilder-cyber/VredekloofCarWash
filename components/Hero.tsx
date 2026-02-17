@@ -4,16 +4,19 @@ import React from 'react';
 const Hero: React.FC = () => {
   return (
     <div className="relative h-screen flex items-center justify-center overflow-hidden bg-gray-900">
-      {/* Background Image: Updated to the specific Unsplash image requested by user */}
-      <div 
-        className="absolute inset-0 z-0 bg-no-repeat transition-transform duration-1000 scale-105"
-        style={{ 
-          backgroundImage: 'url("https://images.unsplash.com/photo-1607860108855-64acf2078ed9?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")',
-          backgroundPosition: 'center center',
-          backgroundSize: 'cover',
-          filter: 'brightness(0.4)'
-        }}
-      />
+      {/* Background Image Wrapper */}
+      <div className="absolute inset-0 z-0">
+         {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-gray-900/60 z-10" />
+        
+        {/* Actual Image */}
+        <div 
+          className="absolute inset-0 bg-no-repeat bg-cover bg-center transition-transform duration-1000 scale-105"
+          style={{ 
+            backgroundImage: 'url("https://drive.google.com/uc?export=view&id=1fcMnV_kxo2wqe6NoVQyB_Pqr9hkk8NTQ")',
+          }}
+        />
+      </div>
       
       {/* Animated geometric overlays */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -21,14 +24,14 @@ const Hero: React.FC = () => {
         <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-brand-800/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         
-        <h1 className="text-5xl md:text-8xl font-display font-extrabold text-white mb-6 leading-[1.1] tracking-tight">
+        <h1 className="text-5xl md:text-8xl font-display font-extrabold text-white mb-6 leading-[1.1] tracking-tight drop-shadow-lg">
           RESTORE YOUR RIDE <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-600">INSIDE AND OUT.</span>
         </h1>
         
-        <p className="max-w-2xl mx-auto text-lg md:text-xl text-gray-300 mb-10 font-medium leading-relaxed">
+        <p className="max-w-2xl mx-auto text-lg md:text-xl text-gray-200 mb-10 font-medium leading-relaxed drop-shadow-md">
           Professional car wash and premium valet services in the heart of Vredekloof. Precision cleaning that lasts.
         </p>
         
@@ -50,20 +53,20 @@ const Hero: React.FC = () => {
           </a>
         </div>
 
-        <div className="mt-20 flex flex-wrap items-center justify-center opacity-80">
-          <div className="text-white flex items-center space-x-2">
-            <span className="text-3xl font-bold">5.0</span>
-            <div className="flex text-yellow-500">★★★★★</div>
-            <span className="text-sm font-medium">Google Reviews</span>
+        <div className="mt-20 flex flex-wrap items-center justify-center opacity-90">
+          <div className="text-white flex items-center space-x-2 bg-black/20 px-6 py-2 rounded-full backdrop-blur-sm">
+            <span className="text-2xl font-bold">5.0</span>
+            <div className="flex text-yellow-400">★★★★★</div>
+            <span className="text-sm font-medium ml-2">Google Reviews</span>
           </div>
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce hidden md:block">
-        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce hidden md:block z-20">
+        <a href="#services" className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2 cursor-pointer">
           <div className="w-1.5 h-1.5 bg-brand-500 rounded-full"></div>
-        </div>
+        </a>
       </div>
     </div>
   );
