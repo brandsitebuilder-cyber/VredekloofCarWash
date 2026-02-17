@@ -7,15 +7,28 @@ const AIAdvisor: React.FC = () => {
   const [description, setDescription] = useState('');
   const [loading, setLoading] = useState(false);
   const [recommendation, setRecommendation] = useState<Recommendation | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!description.trim()) return;
 
     setLoading(true);
-    const result = await getAIRecommendation(description);
-    setRecommendation(result);
-    setLoading(false);
+    setError(null);
+    setRecommendation(null);
+
+    try {
+      const result = await getAIRecommendation(description);
+      if (result) {
+        setRecommendation(result);
+      } else {
+        setError("Unable to generate a recommendation at this time. Please try again or contact us directly.");
+      }
+    } catch (err) {
+      setError("An error occurred while processing your request.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -61,6 +74,12 @@ const AIAdvisor: React.FC = () => {
             </button>
           </div>
         </form>
+
+        {error && (
+            <div className="bg-red-500/20 border border-red-500/50 rounded-2xl p-4 text-red-200 mb-6 animate-in fade-in">
+                {error}
+            </div>
+        )}
 
         {recommendation && (
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 text-left bg-white/10 rounded-[2rem] p-8 border border-white/10">
