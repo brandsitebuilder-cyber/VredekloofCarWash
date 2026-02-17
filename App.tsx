@@ -8,6 +8,7 @@ import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import AIAdvisor from './components/AIAdvisor';
+import WhatsAppButton from './components/WhatsAppButton';
 
 const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -53,6 +54,9 @@ const App: React.FC = () => {
         </section>
       </main>
       <Footer />
+      
+      {/* Floating WhatsApp Button */}
+      <WhatsAppButton />
     </div>
   );
 };
